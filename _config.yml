@@ -98,8 +98,8 @@ ignore:
 # Extensions
 ## Plugins: https://hexo.inpm install hexo-generator-feed --saveo/plugins/
 ## Themes: https://hexo.io/themes/
-theme: landscape
-#theme: pure
+#theme: landscape
+theme: pure
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
