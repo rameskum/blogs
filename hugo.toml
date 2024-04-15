@@ -1,9 +1,9 @@
 baseURL = "https://blogs.rameskum.com"
 languageCode = "en-us"
-title = "Cactus theme example"
+title = "1Stop"
 theme = "cactus"
 copyright = "You" # cactus will use title if copyright is not set
-disqusShortname = "example" # Used when comments is enabled. Cactus will use site title if not set
+disqusShortname = "rameskum" # Used when comments is enabled. Cactus will use site title if not set
 # googleAnalytics = "UA-1234-5"
 
 
@@ -47,13 +47,13 @@ weight = 4
     tabWidth = 4
 
 [params]
-  colortheme = "dark" # dark, light, white, or classic
+  colortheme = "classic" # dark, light, white, or classic
   rss = true # generate rss feed. default value is false
   googleAnalyticsAsync = false # use asynchronous tracking. Synchronous tracking by default
   showAllPostsArchive = false # default
 
   # Home page settings
-  description = "Welcome to your one-stop shop for all things tech! This website is designed to empower developers of all levels by providing insightful blogs, code snippets, and industry updates. Dive deep into the world of programming languages like Java and Shell Scripting, or stay ahead of the curve with articles exploring the latest advancements in Spring Boot."
+  description = "Welcome to your one-stop destination for all things tech! This website is designed to empower developers of all levels by providing insightful blogs, code snippets, and industry updates. Dive deep into the world of programming languages like Java and Shell Scripting, or stay ahead of the curve with articles exploring the latest advancements in Spring Boot."
   mainSection = "posts" # your main section
   showAllPostsOnHomePage = false # default
   postsOnHomePage = 5 # this option will be ignored if showAllPostsOnHomePage is set to true
@@ -69,7 +69,7 @@ weight = 4
   showReadTime = true # default
 
   [params.comments]
-    enabled = false # default
+    enabled = true # default
     engine = "disqus" # only disqus, utterances, and cactus_comments is supported
 
   # the value of name should be an valid font awesome icon name (brands type)
