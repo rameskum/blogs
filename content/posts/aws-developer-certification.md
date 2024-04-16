@@ -1,6 +1,6 @@
 ---
 title: 'Aws Developer Certification'
-date: 2024-04-15T16:50:09-04:00
+date: 2024-04-16T09:50:09-04:00
 draft: false
 tags:
   - cloud
