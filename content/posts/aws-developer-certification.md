@@ -22,7 +22,7 @@ AWS Certified Developer - Associate showcases knowledge and understanding of cor
 - **Level** Associate
 - **Length** `130 minutes` to complete the exam.
 - **Cost** `150 USD`
-- **Format** `65 questions`, either multiple choice or multiple response.
+- **Format** `65 questions`, either multiple choice or multiple responses.
 - **Delivery method** Pearson VUE testing center or online proctored exam.
 - **Passing** `~72%` _\*\*could be changed._
 
@@ -34,12 +34,12 @@ AWS Certified Developer - Associate is a great starting point on the AWS Certifi
 
 - Experience working in a developer role with in-depth knowledge of at least one high-level programming language.
 - Experience in AWS technology.
-- Strong on-premises IT experience and understanding of mapping on-premises to cloud.
+- Strong on-premises IT experience and understanding of mapping on-premises to the cloud.
 - Experience working in other cloud services.
 
 ## Personal Notes
 
-- **Code** `DVA-C01` / `DVA-C02 (latest)`, both codes has same syllabus only module distribution has changed.
+- **Code** `DVA-C01` / `DVA-C02 (latest)`, both codes have the same syllabus and only the module distribution has changed.
 - **Average Time** `2 mins / question`
 - **Types of Questions** Multiple Choice and Multiple Responses
 
@@ -61,26 +61,28 @@ The whole exam is broken down into domains and sub-domains.
 
 ![Elastic Beanstalk Icon](./images/elastic-beanstalk-icon.png)
 
-It is a PaaS which allows to quickly deploy and manager web-apps on AWS **without worrying about the underlying infrastructure**.
+It is a PaaS that allows you to quickly deploy and manage web apps on AWS **without worrying about the underlying infrastructure**.
 
 ### What is Platform as a Service? (PaaS)
 
 A platform allowing customers to develop, run, and manage applications without the complexity of building and maintaining the infrastructure typically associated with developing and launching an app.
 
-PaaS is like a renting a pre-built cloud workspace for developing and running applications. Saves time, money, and allows for easy scaling.
+PaaS is like renting a pre-built cloud workspace for developing and running applications. It saves time and money and allows for easy scaling.
 
 ---
 
-- Not recommended for _"Production"_ applications. Talking about enterprise, large companies.
-- Powered by a CloudFormation template setup for you:
-  - Elastic Load Balancer
-  - Autoscaling Groups
-  - RDS Database
-  - EC2 Instance pre-configured (or custom) platforms
-  - Monitoring (CloudWatch, SNS)
-  - In-Place and Blue/Green deployment methodologies
-  - Security (Rotates Passwords)
-  - Can run **Dockerize** environments
+It is not recommended for _"Production"_ applications. Talking about enterprise, large companies.
+
+Powered by a CloudFormation template setup for you:
+
+- Elastic Load Balancer
+- Autoscaling Groups
+- RDS Database
+- EC2 Instance pre-configured (or custom) platforms
+- Monitoring (CloudWatch, SNS)
+- In-place and Blue/Green deployment methodologies
+- Security (Rotates Passwords)
+- Can run **Dockerize** environments
 
 ### Supported Languages
 
@@ -90,7 +92,7 @@ PaaS is like a renting a pre-built cloud workspace for developing and running ap
 - Tomcat
 - NodeJS
 
-### Web vs Worker Environment
+### Web vs. Worker Environment
 
 #### Web Environment
 
@@ -101,9 +103,9 @@ PaaS is like a renting a pre-built cloud workspace for developing and running ap
     - Designed to Scale
     - Variable cost associated based on load
   - **Single-Instance Env**
-    - Still uses and AGS but Desired Capacity set to 1 to ensure server always running.
+    - Still uses an AGS, but Desired Capacity is set to 1 to ensure the server is always running.
     - No ELB to save on cost.
-    - Public IP Address has to be used to route traffic to server.
+    - The Public IP Address has to be used to route traffic to the server.
 - Creates an ASG (Auto Scaling Group)
 - Creates an ELB (Elastic Load Balance) - optional
 
@@ -135,7 +137,7 @@ These are the deployment policies available with the Elastic Beanstalk
 ![All at Once Deployment](./img/elastic-beanstalk-all-at-once-deplyment.png)
 
 - Deploy the new app version to all instances at the same time.
-- Takes all instances **out of service** while the deployment process.
+- Takes all instances **out of service** during the deployment process.
 - Servers become available again
 
 > The **fastest** but also the most **dangerous** deployment method.
@@ -146,18 +148,18 @@ These are the deployment policies available with the Elastic Beanstalk
 ![Rolling Deployment](./img/elastic-beanstalk-rolling-deplyment.png)
 
 - Deploys the new app version to a batch of instances at a time.
-- Takes batch's instances **out of service** while the deployment processes.
+- Takes batch instances **out of service** while the deployment processes.
 - Reattaches updated instances.
-- Goes onto next batch, taking them out of service.
+- Goes onto the next batch, taking them out of service.
 - Reattaches those instances (rinse and repeat)
 
 > _In Case of Failure_, You need to perform an additional rolling update in order to roll back the changes.
 
 #### Rolling with Additional Batch
 
-Rolling with additional batch's ensure our capacity is never reduced. This is important for applications were a reduction in capacity could cause availability issues for users.
+Rolling with additional batch ensure our capacity is never reduced. This is important for applications where a reduction in capacity could cause availability issues for users.
 
-- Launch new instance that will be used to replace a batch.
+- Launch a new instance that will be used to replace a batch.
 - Deploy update app version to new batch.
 - Attach the new batch and terminate the existing batch.
 
@@ -169,6 +171,6 @@ Rolling with additional batch's ensure our capacity is never reduced. This is im
 
 - Create a new ASG with EC2 instances.
 - Deploy the updated version of the app on the new EC2 instances.
-- Point the ELB to the new ASG and delete the old ASG which will terminate the old EC2 instances.
+- Point the ELB to the new ASG and delete the old ASG, which will terminate the old EC2 instances.
 
 > The **safest way** to deploy for critical applications. _In case of failure_ just terminate the new instances since the existing instances still remain.
