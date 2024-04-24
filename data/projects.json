@@ -9,6 +9,16 @@
 			"name": "Hello Dog",
 			"url": "https://rameskum.github.io/hello-dog/",
 			"desc": "Random dog images by breed name, written in plain HTML, CSS and Javascript."
+		},
+		{
+			"name": "E-Commerce Admin Dashboard",
+			"url": "https://github.com/rameskum/ecommerce-admin",
+			"desc": "NextJs based e-commerce admin page."
+		},
+		{
+			"name": "E-Commerce Website",
+			"url": "https://github.com/rameskum/ecommerce-store",
+			"desc": "NextJs based e-commerce website."
 		}
 	]
 }
