@@ -29,7 +29,7 @@ The producer/Consumer creates a TCP connection to the broker, which is bi-direct
 
 - **Topics**: Logical partitions where the consumer writes content to. It is mandatory for the consumer to specify the topic name for the content to be written, where as consumer need to specify from which topic to read from.
 
-![borker](posts/kafka/kaf-broker.png)
+![borker](kafka-broker.png)
 
 - Every message is assigned a position, and it is fast addressable.
 - The consumer is pooling for more messages, unlike rabbit-mq.
@@ -62,7 +62,7 @@ Spin up another broker, Kafka then marks Leader and follower.
 
 It is possible that one broker be leader for one partition and a follower for another partition.
 
-![kafkads](posts/kafka/kafka-ds.png)
+![kafkads](kafka-ds.png)
 
 **But where is the leader information store?**
 
