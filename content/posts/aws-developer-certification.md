@@ -174,3 +174,21 @@ Rolling with additional batch ensure our capacity is never reduced. This is impo
 - Point the ELB to the new ASG and delete the old ASG, which will terminate the old EC2 instances.
 
 > The **safest way** to deploy for critical applications. _In case of failure_ just terminate the new instances since the existing instances still remain.
+
+### EB - Deployment Methods
+
+| Method                            | Impact of failed deployment                                                                        | Deploy time | No downtime | No DNS change | Rollback progress | code deployed to Instances |
+| --------------------------------- | -------------------------------------------------------------------------------------------------- | ----------- | ----------- | ------------- | ----------------- | -------------------------- |
+| **All at once**                   | Downtime                                                                                           | ⏰          | ❌          | 👍            | Manual            | Existing                   |
+| **Rolling**                       | Single batch out of service; any successful batches before failure running new application version | ⏰⏰ \*     | 👍          | 👍            | Manual            | Existing                   |
+| **Rolling with additional batch** | Minimal if first batch fails; otherwise, similar to Rolling                                        | ⏰⏰⏰ \*   | 👍          | 👍            | Manual            | New and Existing           |
+| **Immutable**                     | Minimal                                                                                            | ⏰⏰⏰⏰    | 👍          | 👍            | Terminate New     | New                        |
+| **Blue/Green**                    | Minimal                                                                                            | ⏰⏰⏰⏰    | 👍          | ❌            | Swap URL          | New                        |
+
+\* Time may vary
+
+### EB - In Place vs. Blue/Green Deployment
+
+Elastic Beanstalk, by default, performs in-place updates.
+
+> 👋🏼 In-Place and Blue/Green Deployment are not definitive in definition and the context can change the scope of what they mean.
