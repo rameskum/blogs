@@ -18,6 +18,10 @@ keywords:
   - [HashCode \& Equal Methods](#hashcode--equal-methods)
   - [Immutability](#immutability)
   - [OOPS Concepts](#oops-concepts)
+    - [Abstraction](#abstraction)
+    - [Encapsulation](#encapsulation)
+    - [Polymorphism](#polymorphism)
+    - [Inheritance](#inheritance)
 
 ### String Concepts
 
@@ -111,3 +115,19 @@ public final class ImmutableClassExample {
 ```
 
 ### OOPS Concepts
+
+#### Abstraction
+
+Abstraction is the process of **showing only necessary information to the outside world while hiding the implementation details**. It simplifies a complex system by hiding its complexities and showing only the necessary information. It is used to reduce complexity by only showing the required information to the outside world and hiding the implementation details.
+
+#### Encapsulation
+
+Encapsulation is the process of **combining related data and functionality into a single unit**. This unit is called an object. It allows for abstraction, hiding implementation details, and increased code reusability. Objects can also interact with each other through methods.
+
+#### Polymorphism
+
+Polymorphism is a concept in object-oriented programming that **allows objects of different types to be treated as if they were of the same type**. Polymorphism allows us to write code that can work with various kinds of objects without explicitly writing code for each type.
+
+#### Inheritance
+
+Inheritance is a feature of object-oriented programming that allows one class to **inherit the attributes and methods of another class**. The class that is being inherited is called the superclass, parent class, or base class. The class that inherits is called the subclass, child class, or derived class. Inheritance allows for code reusability and helps to promote modularity and abstraction in a program. It also provides a way to create a hierarchy of classes, which can be used to model real-world concepts.
