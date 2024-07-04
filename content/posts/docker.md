@@ -10,6 +10,13 @@ keywords:
   - docker
 ---
 
+- [Docker](#docker)
+  - [Installation](#installation)
+  - [Storage](#storage)
+    - [Storage Drivers](#storage-drivers)
+  - [Running Images](#running-images)
+  - [Logging Driver](#logging-driver)
+
 ## Docker
 
 ### Installation
@@ -70,4 +77,15 @@ docker run busybox echo hello world! # sending command to run on container
 docker run -d nginx:1.15.11 # run the container in detached mode
 docker run -d --name nginx --restart always nginx:1.15.11
 docker run -d --name nginx --restart unless-stopped -p 8080:80 --memory 500M --memory-reservation 256M nginx:1.15.11
+```
+
+### Logging Driver
+
+Docker includes multiple logging mechanisms to help you get information from running containers and services. These mechanisms are called logging drivers. Each Docker daemon has a default logging driver, which each container uses unless you configure it to use a different logging driver, or log driver for short.
+
+**Overriding log driver for a Container**
+
+```bash
+docker run -rm --log-driver syslog nginx
+docker run -rm --log-driver json-file --log-opt max-size=50m nginx
 ```
