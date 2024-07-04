@@ -16,6 +16,9 @@ keywords:
     - [Storage Drivers](#storage-drivers)
   - [Running Images](#running-images)
   - [Logging Driver](#logging-driver)
+  - [Docker Swarm](#docker-swarm)
+  - [Namespaces](#namespaces)
+  - [Control Group](#control-group)
 
 ## Docker
 
@@ -89,3 +92,32 @@ Docker includes multiple logging mechanisms to help you get information from run
 docker run -rm --log-driver syslog nginx
 docker run -rm --log-driver json-file --log-opt max-size=50m nginx
 ```
+
+### Docker Swarm
+
+Docker Swarm is a Docker-native clustering system that allows you to manage a group of machines as a single, virtual host. It enables you to run containers across multiple hosts and automates the deployment of containers across a cluster.
+
+With Docker Swarm, you can easily scale your services, run the same container on multiple hosts, and manage the underlying infrastructure. It provides a simple command-line interface and a REST API for managing your services.
+
+- To create swarm manager
+  `docker swarm init`
+- To join a swarm cluster
+  `docker swarm join worker` # to get join command with token
+- To get the node details
+  `docker node ls`
+
+### Namespaces
+
+Docker uses namespaces to provide the isolated workspace called the container.
+The Docker engine uses namespaces such as the following on Linux:
+
+- The `pid` namespace: Process isolation
+- The `net` namespace: Managing network interfaces
+- The `ipc` namespace: Manage access to IPC resources
+- The `mnt` namespace: Managing filesystem mounts
+- The `uts` namespace: Isolating kernel and version identifiers.
+- The `user` namespace: It allows a container process to run as root inside the container while mapping to a different unprivileged user on the host.
+
+### Control Group
+
+A `cgroup` limits an application to a specific set of resources. Control groups allow Docker Engine to share available hardware resources with containers and, optionally, limits and constraints.
