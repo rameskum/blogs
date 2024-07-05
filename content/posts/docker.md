@@ -19,6 +19,10 @@ keywords:
   - [Docker Swarm](#docker-swarm)
   - [Namespaces](#namespaces)
   - [Control Group](#control-group)
+  - [Image](#image)
+    - [Dockerfile](#dockerfile)
+      - [Multi-Stage Build](#multi-stage-build)
+    - [Managing Image](#managing-image)
 
 ## Docker
 
@@ -121,3 +125,74 @@ The Docker engine uses namespaces such as the following on Linux:
 ### Control Group
 
 A `cgroup` limits an application to a specific set of resources. Control groups allow Docker Engine to share available hardware resources with containers and, optionally, limits and constraints.
+
+### Image
+
+An image is a read-only template with instructions for creating a Docker container. It contains the filesystem changes and configurations made when building a Docker image. An image typically contains the application and its dependencies. Images are created from Dockerfiles or can be pulled from a Docker registry. Once an image is created, it can be used to run multiple containers.
+
+In Docker, an image is built using a Dockerfile, which is a text file that contains the instructions to build an image. The Dockerfile specifies the base image, installs dependencies, copies files, and sets environment variables.
+
+To build an image, you can use the `docker build` command. Provide the path to the Dockerfile and, optionally, a tag for the image. The tag is used to identify the image later.
+
+> Images are built in layers.
+
+#### Dockerfile
+
+It is used to create an image. A sample docker file example:
+
+```dockerfile
+# Simple nginx image
+FROM ubuntu:bionic
+
+ENV NGINX_VERSION 1.14.*
+
+RUN apt-get update && apt-get install -y curl
+RUN apt-get update && apt-get install -y nginx=$NGINX_VERSION
+
+WORKDIR /var/www/html
+# WORKDIR www # its a relative path since there is no /
+ADD index.html ./
+# COPY command can also be used, but add has some extra features
+
+EXPOSE 80
+
+CMD ["nginx", "-g", "daemon off;"]
+
+STOPSIGNAL SIGTERM
+HEALTHCHECK CMD curl localhost:80
+```
+
+**Make the docker image faster**
+
+- image should be ephemeral, easy to start, stop and restart
+- Put things that are less likely to change on lower-level layers
+- Don't create unnecessary layers
+- Avoid including any unnecessary files, packages, etc. in the image.
+
+##### Multi-Stage Build
+
+Multi-stage builds have more than one `FROM` directive in the Dockerfile, with each `FROM` directive starting a new stage. Simple example:
+
+```Dockerfile
+# name the first compiler stage to be referenced in later layer
+FROM golang:1.12.4 AS compiler
+WORKDIR /helloworld
+COPY helloworld.go.
+RUN GOOS=linux go build -a -installsuffix cgo -o helloworld .
+
+# start a new layer stage
+FROM alpine:3.9.3
+WORKDIR /root
+COPY --from=compiler /helloworld/helloworld .
+CMD L"
+-/helloworld"]
+```
+
+#### Managing Image
+
+```bash
+# to pull the image
+docker image pull <image name>
+# to list all the images
+docker image ls
+```
