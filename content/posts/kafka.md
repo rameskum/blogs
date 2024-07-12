@@ -216,3 +216,29 @@ run();
 - Zookeeper
 - Producer-explicit partition can lead to problems
 - It is complex to install, configure, and manage
+
+### Questions
+
+### The messages in a partition in Kafka consumed sequentially by multiple consumers?
+
+**Key Concepts:**
+
+1. Topic: A category or feed name to which messages are published.
+2. Partition: A partition is a division of a topic’s log. Each partition is an ordered, immutable sequence of messages.
+3. Consumer Group: A group of consumers that work together to consume a topic. Each consumer in the group is assigned to one or more partitions exclusively.
+
+**How Consumption Works:**
+
+- Each partition is assigned to only one consumer within a consumer group.
+- The consumer reads messages from the assigned partition sequentially. This means that messages are consumed in the order they were produced.
+- Multiple consumers can be part of the same consumer group, and Kafka will distribute the partitions among them. However, within a single partition, the order of messages is maintained and consumed by only one consumer at a time.
+
+**Example:**
+
+Consider a topic with 3 partitions `(P0, P1, P2)` and a consumer group with 3 consumers `(C1, C2, C3)`:
+
+- P0 might be assigned to C1.
+- P1 might be assigned to C2.
+- P2 might be assigned to C3.
+
+Each consumer will consume messages from their respective partitions sequentially. If you **add more consumers than partitions**, some consumers **will be idle** as partitions cannot be split further.

@@ -23,6 +23,7 @@ keywords:
     - [Dockerfile](#dockerfile)
       - [Multi-Stage Build](#multi-stage-build)
     - [Managing Image](#managing-image)
+    - [Flattening an Image](#flattening-an-image)
 
 ## Docker
 
@@ -195,4 +196,29 @@ CMD L"
 docker image pull <image name>
 # to list all the images
 docker image ls
+# list all images
+docker image ls -a
+# inspect an image
+docker image inspect nginx
+docker image inspect nginx --format "{{.Architecture}} {{.Os}}"
+# delete the image
+docker image rm nginx
+docker rmi nginx
+# delete all dangling images
+docker image prune
+```
+
+#### Flattening an Image
+
+- Run a container from the image
+- Export the container to an archive: `docker export`
+- Import the archive as a new image using `docker import`
+
+```bash
+# run the image
+docker run --name abc -d nginx
+# export the container
+docker export abc > abc.tar
+# import the tar file
+cat abc.tar | docker import - name:latest
 ```
